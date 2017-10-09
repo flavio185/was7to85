@@ -1,7 +1,7 @@
-AdminConfig.modify('(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#Property_1507195666486)', '[[validationExpression ""] [name "was.repository.temp"] [description ""] [value "/opt/WebSphere8.5.5/AppServer/tmp"] [required "false"]]')
-AdminConfig.list('Property', '(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#JavaVirtualMachine_1)')
-AdminConfig.modify('(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#Property_1507195666485)', '[[validationExpression ""] [name "websphere.workspace.root"] [description ""] [value "/opt/WebSphere8.5.5/AppServer/wstemp"] [required "false"]]')
-AdminConfig.list('Property', '(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#JavaVirtualMachine_1)')
+#AdminConfig.modify('(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#Property_1507195666486)', '[[validationExpression ""] [name "was.repository.temp"] [description ""] [value "/opt/WebSphere8.5.5/AppServer/tmp"] [required "false"]]')
+#AdminConfig.list('Property', '(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#JavaVirtualMachine_1)')
+#AdminConfig.modify('(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#Property_1507195666485)', '[[validationExpression ""] [name "websphere.workspace.root"] [description ""] [value "/opt/WebSphere8.5.5/AppServer/wstemp"] [required "false"]]')
+#AdminConfig.list('Property', '(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#JavaVirtualMachine_1)')
 
 servers = AdminConfig.list( 'ServerEntry' ).splitlines()
 servers.sort()
