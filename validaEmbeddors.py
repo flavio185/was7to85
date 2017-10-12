@@ -39,14 +39,14 @@ for aServer in servers:
                         try:
                           f = opener.open("http://%s:%s/%s/Embeddor" % (hostname, port, app))
                         except:
-                          print ("KO \t %s\t %s\t Connection Refused" % (hostname, app))
+                          print ("KO \t http://%s:%s/%s/Embeddor \t Connection Refused" % (hostname, port, app))
                         #
                         embeddor = f.read()
                         #print embeddor
                         if embeddor.find("Running") > -1:
-                          print ("OK \t %s\t %s\t Embeddor Running" % (hostname, app))
+                          print ("OK \t http://%s:%s/%s/Embeddor \t Embeddor Running" % (hostname, port, app))
                         else:
-                          print ("KO \t %s\t %s\t Embeddor Not Running" % (hostname, app))
+                          print ("KO \t http://%s:%s/%s/Embeddor \t Embeddor Not Running" % (hostname, port, app))
                           #pass
                           #pass
                         #print embeddor
