@@ -20,9 +20,9 @@ for app in AdminApp.list().split():
                             modweb=lib[5:]
                             esce = modweb.split('.')[0]
                             hash = esce + modweb
-                            print('aplicativo sera atualizado: %s'%hash)   
                             print('AdminApp.edit(\'%s\',\'[ -MapInitParamForServlet [[ %s RigelBootStrapServlet bootStrapEncryptConfig null file:/ArquitecturaE-business/Xml/CfgRigel%s/gaia/ConfigurationManager.xml ][ %s RigelBootStrapServlet urlConfig null file:/ArquitecturaE-business/Xml/CfgRigel%s/gaia/kernel.xml ][ %s RigelBootStrapServlet variableConfigPath null /ArquitecturaE-business/Xml/CfgRigel%s/RigelJars_Configuration ]]]\')\n' %(app,hash,newArq,hash,newArq,hash,newArq))
                             #AdminApp.edit(app, '[ -MapInitParamForServlet [[ '+hash+' RigelBootStrapServlet bootStrapEncryptConfig null file:/ArquitecturaE-business/Xml/CfgRigel'+newArq+'/gaia/ConfigurationManager.xml ][ '+hash+' RigelBootStrapServlet urlConfig null file:/ArquitecturaE-business/Xml/CfgRigel'+newArq+'/gaia/kernel.xml ][ '+hash+' RigelBootStrapServlet variableConfigPath null /ArquitecturaE-business/Xml/CfgRigel'+newArq+'/RigelJars_Configuration ]]]') 
+                            print('aplicativo sera atualizado: %s'%hash)   
                             print('')   
 	except:
 		continue
