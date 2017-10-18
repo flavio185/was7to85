@@ -15,6 +15,7 @@ Was85 NodeUpgrade
 alteraSharedArquiteturaPorApp.py
 
 alteraInitializeParamPorApp.py
+
 alteraTemp.py
 
 CopiaJavaPolicy.sh
