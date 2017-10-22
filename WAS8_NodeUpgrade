@@ -1,38 +1,57 @@
-sudo su - websphere -c "
-  #seta variaveis
+sudo su - websphere -c '
+  echo \"seta variaveis\"
   hostname=$(hostname -s)
-  profileName=$RD_OPTION_PROFILE_NAME
-  cellName=$RD_OPTION_CELL_NAME
-  fullfile=$(find /opt/WebSphere7/AppServer/profiles/Node01/config/cells/$cellName/nodes/ -name $hostname*)
+  username=@option.USERNAME@
+  password=@option.PASSWORD@
+  backup=@option.BACKUP@
+  profileName=@option.PROFILE_NAME@
+  cellName=@option.CELL_NAME@
+  fullfile=$(find /opt/WebSphere7/AppServer/profiles/Node01/config/cells/$cellName/nodes/ -name $hostname* | head -1)
   nodeName=$(basename $fullfile)
   ehDmgr=$(if [[ -d /opt/WebSphere7/AppServer/profiles/Dmgr01 ]]; then echo ehdmgr; else echo ""; fi)
 
-  #se for dmgr não faz o killAll, porque os nodes precisam conectar no dmgr pra fazer sua parte.
-  if [[ ! ehDmgr ]] 
+   #se for dmgr não faz o killAll, porque os nodes precisam conectar no dmgr pra fazer sua parte.
+  if [[ ! $ehDmgr ]] 
   then
-    killall java
+    echo "##matando processos java"
+    killall -9 java
     sleep 10
-  fi
+  else
+    echo "##Servidor também é dmgr. Não será feito o kill dos processos java."
+  fi 
   
-  mkdir -p /opt/WebSphere8.5.5/backupdir
+  mkdir -p /opt/WebSphere8.5.5/backupdir 
+  
   #faz backup do profile antigo.
-  /opt/WebSphere7/AppServer/profiles/Node01/bin/backupConfig.sh /opt/WebSphere8.5.5/backupdir/v70node01backupBeforeV85migration.zip
+    if [[ $backup == "sim" ]] 
+  then
+    echo "##1 iniciando backup do profile antigo##"
+    /opt/WebSphere7/AppServer/profiles/Node01/bin/backupConfig.sh /opt/WebSphere8.5.5/backupdir/v70node01backupBeforeV85migration.zip -username $username -password $password
+    echo ""; echo "##$?finalizado backup##"
+  else
+    echo "##1 Backup não será feito##"
+  fi 
+  
+  
   #instala o profile novo.
   #INSTCONFSUCCESS: Success: Profile Node01 now exists. Please consult /opt/WebSphere8.5.5/AppServer/profiles/Node01/logs/AboutThisProfile.txt for more information about this profile.
-  /opt/WebSphere8.5.5/AppServer/bin/manageprofiles.sh -create -profileName $profileName -templatePath /opt/WebSphere8.5.5/AppServer/profileTemplates/managed -nodeName $nodeName -cellName $cellName -profilePath /opt/WebSphere8.5.5/AppServer/profiles/Node01 -personalCertValidityPeriod=15 -signingCertValidityPeriod=25
+  echo "" ; echo "##2 Iniciando instalacao do profile $profileName" 
+  /opt/WebSphere8.5.5/AppServer/bin/manageprofiles.sh -create -profileName $profileName -templatePath /opt/WebSphere8.5.5/AppServer/profileTemplates/managed -nodeName $nodeName -cellName $cellName -profilePath /opt/WebSphere8.5.5/AppServer/profiles/Node01 -personalCertValidityPeriod=15 -signingCertValidityPeriod=25 
+  echo ""; echo "##$?finalizado instalação do profile $profileName##"
   #faz um pré upgrade.
   #MIGR0303I: The existing Application Server environment is saved.
   #MIGR0420I: The first step of migration completed successfully.
-  /opt/WebSphere8.5.5/AppServer/bin/WASPreUpgrade.sh /opt/WebSphere8.5.5/backupdir/v70tov85node1 /opt/WebSphere7/AppServer -oldProfile $profileName
+  echo ""; echo "##3 Iniciando PRE migracao do profile $profileName antigo"; echo ""
+  /opt/WebSphere8.5.5/AppServer/bin/WASPreUpgrade.sh /opt/WebSphere8.5.5/backupdir/v70tov85node1 /opt/WebSphere7/AppServer -oldProfile $profileName 
+  echo ""; echo "$?##finalizado PRE migracao do profile $profileName antigo"
   #Pós upgrade
   #CEIMI0007I The Common Event Infrastructure migration is complete.
   #MIGR0307I: The restoration of the previous Application Server environment is complete.
   #MIGR0271W: Migration completed successfully, with one or more warnings.
-  /opt/WebSphere8.5.5/AppServer/bin/WASPostUpgrade.sh /opt/WebSphere8.5.5/backupdir/v70tov85node1 -profileName $profileName -oldProfile $profileName -replacePorts TRUE -backupConfig TRUE -scriptCompatibility TRUE -username websphere -password temporal
-  #
-  #copiar java policy
-  cp /opt/WebSphere7/AppServer/java/jre/lib/security/java.policy /opt/WebSphere8.5.5/AppServer/java/jre/lib/security
+  echo ""; echo "##4 Iniciando POS migracao do profile $profileName antigo"; echo ""
+  /opt/WebSphere8.5.5/AppServer/bin/WASPostUpgrade.sh /opt/WebSphere8.5.5/backupdir/v70tov85node1 -profileName $profileName -oldProfile $profileName -replacePorts TRUE -backupConfig TRUE -scriptCompatibility TRUE -username $username -password $password
+  echo ""; echo "$?##finalizado POS migracao do profile $profileName antigo"
   #
   #starta o nó
-  /opt/WebSphere8.5.5/AppServer/profiles/Node01/bin/startNode.sh
-"
+  #/opt/WebSphere8.5.5/AppServer/profiles/Node01/bin/startNode.sh
+'

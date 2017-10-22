@@ -1,30 +1,36 @@
-sudo su - websphere -c "
-  #seta variaveis
-  hostname=$(hostname -s)
-  cellName=$RD_OPTION_CELL_NAME
+#seta variaveis
+export hostname=$(hostname -s)
+export cellName=@option.CELL_NAME@
 
-  killall java
-  sleep 5
-  killall java
-  sleep 10
-  mkdir -p /opt/WebSphere8.5.5/backupdir
+sudo su - websphere -c "
+
+  killall java 
+  sleep 5  
+  killall -9 java 
+  sleep 2 
+  mkdir -p /opt/WebSphere8.5.5/backupdir 
   #faz backup do profile antigo.
-  /opt/WebSphere7/AppServer/profiles/Dmgr01/bin/backupConfig.sh /opt/WebSphere8.5.5/backupdir/v70dmgr01backupV85migration.zip
+  echo \"##1 iniciado backup do profile antigo##\"
+  /opt/WebSphere7/AppServer/profiles/Dmgr01/bin/backupConfig.sh /opt/WebSphere8.5.5/backupdir/v70dmgr01backupV85migration.zip 
+  echo \"\"; echo \"##finalizado backup##\"
   #instala o profile novo.
   #INSTCONFSUCCESS: Success: Profile Node01 now exists. Please consult /opt/WebSphere8.5.5/AppServer/profiles/Node01/logs/AboutThisProfile.txt for more information about this profile.
+  echo \"\"; echo \"##2 Iniciando instalacao do profile Dmgr01\" 
   /opt/WebSphere8.5.5/AppServer/bin/manageprofiles.sh -create -profileName Dmgr01 -profilePath /opt/WebSphere8.5.5/AppServer/profiles/Dmgr01 -templatePath /opt/WebSphere8.5.5/AppServer/profileTemplates/management -serverType DEPLOYMENT_MANAGER -nodeName Dmgr01Node -hostName $hostname -cellName $cellName -isDefault -personalCertValidityPeriod=15 -signingCertValidityPeriod=25 -enableAdminSecurity true -adminUserName wasadmin -adminPassword Chrome@#34
+  echo \"\" echo \"##finalizado instalação do profile##\"
   #faz um pré upgrade.
   #MIGR0303I: The existing Application Server environment is saved.
   #MIGR0420I: The first step of migration completed successfully.
+  echo \"\"; echo \"##3 Iniciando PRE migracao do profile Dmgr01 antigo\"; echo \"\"
   /opt/WebSphere8.5.5/AppServer/bin/WASPreUpgrade.sh /opt/WebSphere8.5.5/backupdir/v70tov85dmgr01 /opt/WebSphere7/AppServer -oldProfile Dmgr01
+  echo \"\"; echo \"##finalizado PRE migracao do profile Dmgr01 antigo\"
   #Pós upgrade
   #CEIMI0007I The Common Event Infrastructure migration is complete.
   #MIGR0307I: The restoration of the previous Application Server environment is complete.
   #MIGR0271W: Migration completed successfully, with one or more warnings.
+  echo \"\"; echo \"##4 Iniciando POS migracao do profile Dmgr01 antigo\"; echo \"\"
   /opt/WebSphere8.5.5/AppServer/bin/WASPostUpgrade.sh /opt/WebSphere8.5.5/backupdir/v70tov85dmgr01 -profileName Dmgr01 -oldProfile Dmgr01 -replacePorts TRUE -backupConfig TRUE -includeApps TRUE -scriptCompatibility TRUE -keepDmgrEnabled FALSE -username wasadmin -password Chrome@#34
+  echo \"\"; echo \"##finalizado POS migracao do profile Dmgr01 antigo\"
+  echo \"Script finalizado\"
   #
-  #copiar java policy
-  #
-  #starta o nó
-  /opt/WebSphere8.5.5/AppServer/profiles/Node01/bin/startManager.sh
-"
+  "
