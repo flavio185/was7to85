@@ -1,7 +1,5 @@
-#AdminConfig.modify('(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#Property_1507195666486)', '[[validationExpression ""] [name "was.repository.temp"] [description ""] [value "/opt/WebSphere8.5.5/AppServer/tmp"] [required "false"]]')
-#AdminConfig.list('Property', '(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#JavaVirtualMachine_1)')
-#AdminConfig.modify('(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#Property_1507195666485)', '[[validationExpression ""] [name "websphere.workspace.root"] [description ""] [value "/opt/WebSphere8.5.5/AppServer/wstemp"] [required "false"]]')
-#AdminConfig.list('Property', '(cells/BKSHMLJL/nodes/Dmgr01Node/servers/dmgr|server.xml#JavaVirtualMachine_1)')
+#SOMENTE NODE E DMGR AQUI
+#/opt/WebSphere8.5.5/AppServer/profiles/Dmgr01/bin/wsadmin.sh -lang jython
 
 servers = AdminConfig.list( 'ServerEntry' ).splitlines()
 servers.sort()

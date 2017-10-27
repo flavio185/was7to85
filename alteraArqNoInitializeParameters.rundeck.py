@@ -4,8 +4,8 @@ for app in AdminApp.list().split():
 		newArq=""
 		librs=AdminApp.view(app, '[ -MapSharedLibForMod [[ ]]]' ).split('\n')    
 		for lib in librs:
-			if lib.startswith('Module:  ') and not lib.endswith('ESCE'):
-				print('aplicacao: '+ lib[7:] + ' ; ')
+			#if lib.startswith('Module:  ') and not lib.endswith('ESCE'):
+			#	print('aplicacao: '+ lib[7:] + ' ; ')
 			if lib.startswith('Shared Libraries:'):
 				libraries = lib[19:]
 				libs = libraries.split('+')

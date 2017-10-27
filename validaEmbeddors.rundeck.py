@@ -1,10 +1,13 @@
-if [[ $RD_OPTION_WAS_VERSION == "WebSphere7" ]]; then
+export WAS_VERSION=@option.WAS_VERSION@
+export DMGR_NODE="@option.DMGR_NODE@"
+
+if [[ $WAS_VERSION == "WebSphere7" ]]; then
   echo "Testando embeddors do WAS7"
-elif [[ $RD_OPTION_WAS_VERSION == "WebSphere8.5.5" ]]; then
+elif [[ $WAS_VERSION == "WebSphere8.5.5" ]]; then
   echo "Testando embeddors do WAS8.5"
 fi
 
-cat <<EOF >/tmp/validaEmbeddors.py
+cat <<EOF >/var/tmp/validaEmbeddors.py
 import sys, re, urllib
 
 
@@ -58,10 +61,10 @@ for aServer in servers:
                         else:
                           print ("KO \t http://%s:%s/%s/Embeddor \t Embeddor Not Running" % (hostname, port, app))
 EOF
-chmod +x /tmp/validaEmbeddors.py
+chmod 777 /var/tmp/validaEmbeddors.py
 
 sudo su - websphere -c "
-  /opt/$RD_OPTION_WAS_VERSION/AppServer/profiles/Dmgr01/bin/wsadmin.sh -lang jython -f /tmp/validaEmbeddors.py
+  /opt/$WAS_VERSION/AppServer/profiles/$DMGR_NODE/bin/wsadmin.sh -lang jython -f /var/tmp/validaEmbeddors.py
 "
 
 rm -rf /tmp/validaEmbeddors.py
