@@ -12,8 +12,8 @@ if [[ -d /opt/WebSphere7/AppServer/profiles/Dmgr01 ]]; then
         echo "Provavelmente o was8 ainda não foi pósMigrado ou iniciado."
     else
         cd /opt/WebSphere7/AppServer/profiles/Dmgr01/config/cells/$cellName/nodes/Dmgr01Node/ &&
-        cp serverindex.xml serverindex.xml_PosMig &&
-        cp serverindex.xml_disabled serverindex.xml &&
+        mv serverindex.xml serverindex.xml_PosMig &&
+        mv serverindex.xml_disabled serverindex.xml &&
         echo "Arquivos alterados." &&
         echo "O dmgr do was7 pode ser iniciado."
     fi
@@ -31,8 +31,8 @@ if [[ -d /opt/WebSphere7/AppServer/profiles/Node01 ]]; then
         echo "Provavelmente o was8 ainda não foi pósMigrado ou iniciado."
     else
         cd /opt/WebSphere7/AppServer/profiles/$profileName/config/cells/$cellName/nodes/$nodeName/ &&
-        cp serverindex.xml serverindex.xml_PosMig &&
-        cp serverindex.xml_disabled serverindex.xml &&
+        mv serverindex.xml serverindex.xml_PosMig &&
+        mv serverindex.xml_disabled serverindex.xml &&
         echo "Arquivos alterados." &&
         echo "O node do was7 pode ser iniciado."
     fi

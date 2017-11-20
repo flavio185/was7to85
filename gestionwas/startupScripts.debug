@@ -1,0 +1,238 @@
++ WAS7_HOME=
++ wasID=
++ DMGR_PROFILE_PATH=
++ WSADMIN_JACL=
++ NODE_PROFILE_PATH=
++ WSADMIN=
++ WAS_HOME=
++ WAS_ID=
++ test -n /opt/gestionWAS
++ . /opt/gestionWAS/bin/setupCmdLine.sh
+++ trap clean_up EXIT SIGQUIT SIGKILL SIGTERM
++++ /bin/cat /opt/gestionWAS/version.txt
++++ /bin/head -n 1
++++ /bin/cut -d ' ' -f 2
+++ export version=3.0
+++ version=3.0
++++ uname -a
+++ OSNAME='Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 #1 SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux'
+++ test 'Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 #1 SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux'
++++ uname -a
++++ grep CYGWIN
+++ OSNAME=
+++ test ''
+++ export OS_TYPE=UNIX
+++ OS_TYPE=UNIX
+++ export OS_TYPE
+++ '[' UNIX = WINDOWS ']'
+++ export IHS_HOME=/opt/IHSCONF
+++ IHS_HOME=/opt/IHSCONF
+++ export WAS7_HOME=/opt/WebSphere7/AppServer
+++ WAS7_HOME=/opt/WebSphere7/AppServer
+++ export WAS85_HOME=/opt/WebSphere8.5.5/AppServer
+++ WAS85_HOME=/opt/WebSphere8.5.5/AppServer
+++ export JAVA_HOME=/opt/gestionWAS/java/java
+++ JAVA_HOME=/opt/gestionWAS/java/java
+++ export BANKSPHERE_HOME=/ArquitecturaE-business
+++ BANKSPHERE_HOME=/ArquitecturaE-business
+++ export SCRIPTS_HOME==/opt/gestionWAS/scripts
+++ SCRIPTS_HOME==/opt/gestionWAS/scripts
+++ export backupPath=/opt/gestionWAS/backups
+++ backupPath=/opt/gestionWAS/backups
++++ uname -a
+++ OSNAME='Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 #1 SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux'
++++ echo Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 '#1' SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux
++++ grep AIX
+++ AIX=
++++ echo Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 '#1' SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux
++++ grep SunOS
+++ SOLARIS=
++++ echo Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 '#1' SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux
++++ grep Linux
+++ LINUX='Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 #1 SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux'
+++ test ''
+++ test ''
+++ test 'Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 #1 SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux'
+++ export UNIX_NAME=LINUX
+++ UNIX_NAME=LINUX
+++ export gestionWAS_USER=websphere
+++ gestionWAS_USER=websphere
+++ '[' -f /opt/gestionWAS/localscripts/private/setupCmdLine.sh ']'
+++ . /opt/gestionWAS/localscripts/private/setupCmdLine.sh
++++ export mailTO=to@changeit.com
++++ mailTO=to@changeit.com
++++ export mailCC=cc@changeit.com
++++ mailCC=cc@changeit.com
++++ export http_proxy=
++++ http_proxy=
++++ export https_proxy=
++++ https_proxy=
++ echo /opt/WebSphere7/AppServer
+/opt/WebSphere7/AppServer
++ echo
+
++ echo
+
++ echo
+
++ echo
+
++ echo
+
++ echo
+
++ echo
+
++ '[' UNIX = WINDOWS ']'
++++ dirname /opt/gestionWAS/scripts/private/housekeeping/startupScripts.sh
+++ basename /opt/gestionWAS/scripts/private/housekeeping
++ export packageName=housekeeping
++ packageName=housekeeping
++ echo housekeeping
+housekeeping
++ source /opt/gestionWAS/scripts/private/housekeeping/package.descriptor
+++ export packageVersion=1.0
+++ packageVersion=1.0
+++ export packageConfigDirectory=/opt/gestionWAS/localconfig/private/housekeeping
+++ packageConfigDirectory=/opt/gestionWAS/localconfig/private/housekeeping
+++ export packageLocalScriptDirectory=/opt/gestionWAS/localscripts/private/housekeeping
+++ packageLocalScriptDirectory=/opt/gestionWAS/localscripts/private/housekeeping
+++ export packageConfigFile=/opt/gestionWAS/localconfig/private/housekeeping/housekeeping.conf
+++ packageConfigFile=/opt/gestionWAS/localconfig/private/housekeeping/housekeeping.conf
+++ export 'packageDescription=Housekeeping tasks scheduler configuration'
+++ packageDescription='Housekeeping tasks scheduler configuration'
+++ export 'packageOwner=Direccion global de Tecnica de Sistemas. Sistemas Transaccionales'
+++ packageOwner='Direccion global de Tecnica de Sistemas. Sistemas Transaccionales'
+++ export gestionWAS_min_version_supported=3.0
+++ gestionWAS_min_version_supported=3.0
+++ export gestionWAS_packages_requisites=was85,generics,IHS
+++ gestionWAS_packages_requisites=was85,generics,IHS
+++ export disabled=false
+++ disabled=false
++ export SCRIPT_PATH=/opt/gestionWAS/scripts/private/housekeeping
++ SCRIPT_PATH=/opt/gestionWAS/scripts/private/housekeeping
++ export SCRIPT_TMP=/opt/gestionWAS/tmp/housekeeping
++ SCRIPT_TMP=/opt/gestionWAS/tmp/housekeeping
++ '[' '!' -d /opt/gestionWAS/tmp/housekeeping ']'
++ rm -Rf /opt/gestionWAS/tmp/housekeeping
++ mkdir /opt/gestionWAS/tmp/housekeeping
++ '[' false = true ']'
++ '[' '!' -d /opt/gestionWAS/localconfig/private/housekeeping ']'
++ echo packageConfigDirectory /opt/gestionWAS/localconfig/private/housekeeping
+packageConfigDirectory /opt/gestionWAS/localconfig/private/housekeeping
++ '[' '!' -d /opt/gestionWAS/localscripts/private/housekeeping ']'
++ '[' -f /opt/gestionWAS/localconfig/private/housekeeping/housekeeping.conf ']'
++ . /opt/gestionWAS/localconfig/private/housekeeping/housekeeping.conf
+++ export jobsDirectory=/opt/gestionWAS/scripts/private/housekeeping/was/linuxTasks/liferay_dmgr_and_node
+++ jobsDirectory=/opt/gestionWAS/scripts/private/housekeeping/was/linuxTasks/liferay_dmgr_and_node
+++ export minJobsMustBeExecuted=10
+++ minJobsMustBeExecuted=10
+++ export wasID=was85
+++ wasID=was85
++ validateGestionWAS 3.0
+++ echo 3.0
+++ awk '{printf("%d\n", $1 * 100)}'
++ verGW=300
+++ echo 3.0
+++ awk '{printf("%d\n", $1 * 100)}'
++ verPKG=300
++ ((  verGW < verPKG  ))
++ validatePackages was85,generics,IHS
++ echo was85,generics,IHS
++ awk 'BEGIN {FS=","} { for (i=1; i<=NF; i++) printf "%s\n",$i }'
++ read Line
++ echo was85
+was85
++ '[' '!' -d /opt/gestionWAS/scripts/private/was85 ']'
++ read Line
++ echo generics
+generics
++ '[' '!' -d /opt/gestionWAS/scripts/private/generics ']'
++ read Line
++ echo IHS
+IHS
++ '[' '!' -d /opt/gestionWAS/scripts/private/IHS ']'
++ read Line
++ '[' 0 '!=' 0 ']'
++ '[' -f /opt/gestionWAS/localscripts/private/housekeeping/startupScripts.sh ']'
++ . /opt/gestionWAS/localscripts/private/housekeeping/startupScripts.sh
+++ . /opt/gestionWAS/bin/setupCmdLine.sh
++++ trap clean_up EXIT SIGQUIT SIGKILL SIGTERM
+++++ /bin/cat /opt/gestionWAS/version.txt
+++++ /bin/head -n 1
+++++ /bin/cut -d ' ' -f 2
++++ export version=3.0
++++ version=3.0
+++++ uname -a
++++ OSNAME='Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 #1 SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux'
++++ test 'Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 #1 SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux'
+++++ uname -a
+++++ grep CYGWIN
++++ OSNAME=
++++ test ''
++++ export OS_TYPE=UNIX
++++ OS_TYPE=UNIX
++++ export OS_TYPE
++++ '[' UNIX = WINDOWS ']'
++++ export IHS_HOME=/opt/IHSCONF
++++ IHS_HOME=/opt/IHSCONF
++++ export WAS7_HOME=/opt/WebSphere7/AppServer
++++ WAS7_HOME=/opt/WebSphere7/AppServer
++++ export WAS85_HOME=/opt/WebSphere8.5.5/AppServer
++++ WAS85_HOME=/opt/WebSphere8.5.5/AppServer
++++ export JAVA_HOME=/opt/gestionWAS/java/java
++++ JAVA_HOME=/opt/gestionWAS/java/java
++++ export BANKSPHERE_HOME=/ArquitecturaE-business
++++ BANKSPHERE_HOME=/ArquitecturaE-business
++++ export SCRIPTS_HOME==/opt/gestionWAS/scripts
++++ SCRIPTS_HOME==/opt/gestionWAS/scripts
++++ export backupPath=/opt/gestionWAS/backups
++++ backupPath=/opt/gestionWAS/backups
+++++ uname -a
++++ OSNAME='Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 #1 SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux'
+++++ echo Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 '#1' SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux
+++++ grep AIX
++++ AIX=
+++++ echo Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 '#1' SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux
+++++ grep SunOS
++++ SOLARIS=
+++++ echo Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 '#1' SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux
+++++ grep Linux
++++ LINUX='Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 #1 SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux'
++++ test ''
++++ test ''
++++ test 'Linux washppvlbr81.bs.br.bsch 2.6.32-573.45.1.el6.x86_64 #1 SMP Mon Jul 10 06:18:45 EDT 2017 x86_64 x86_64 x86_64 GNU/Linux'
++++ export UNIX_NAME=LINUX
++++ UNIX_NAME=LINUX
++++ export gestionWAS_USER=websphere
++++ gestionWAS_USER=websphere
++++ '[' -f /opt/gestionWAS/localscripts/private/setupCmdLine.sh ']'
++++ . /opt/gestionWAS/localscripts/private/setupCmdLine.sh
+++++ export mailTO=to@changeit.com
+++++ mailTO=to@changeit.com
+++++ export mailCC=cc@changeit.com
+++++ mailCC=cc@changeit.com
+++++ export http_proxy=
+++++ http_proxy=
+++++ export https_proxy=
+++++ https_proxy=
+++ echo 'eu wasid ' was85
+eu wasid  was85
+++ source /opt/gestionWAS/localconfig/private/was85/was85.conf
++++ export WAS_HOME=/opt/WebSphere8.5.5/AppServer
++++ WAS_HOME=/opt/WebSphere8.5.5/AppServer
++++ export NODE_PROFILE_PATH=/opt/WebSphere8.5.5/AppServer/profiles/Node01
++++ NODE_PROFILE_PATH=/opt/WebSphere8.5.5/AppServer/profiles/Node01
++++ export DMGR_PROFILE_PATH=/opt/WebSphere8.5.5/AppServer/profiles/Dmgr01
++++ DMGR_PROFILE_PATH=/opt/WebSphere8.5.5/AppServer/profiles/Dmgr01
++++ export WSADMIN_PARAMETERS=
++++ WSADMIN_PARAMETERS=
++++ export startTimeout=900
++++ startTimeout=900
++++ export SCRIPT_USER=wasadmin
++++ SCRIPT_USER=wasadmin
++++ export SCRIPT_PASSWORD=Q2hyb21lQCMzNAo=
++++ SCRIPT_PASSWORD=Q2hyb21lQCMzNAo=
++ clean_up
++ '[' -d '' ']'
++ return 1
