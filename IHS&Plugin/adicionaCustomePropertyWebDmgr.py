@@ -4,15 +4,21 @@ webservers = AdminConfig.list('WebServer').split()
 
 for web in webservers:
     property = AdminConfig.list('Property', web).split()
-    for prop in property:
-        if prop.find("UseInsecure") >= 0 :
-            AdminConfig.modify(prop, '[[validationExpression ""] [name "UseInsecure"] [description ""] [value "true"] [required "false"]]')
-            print "midificado ",prop
-            AdminConfig.save()
-        else:
-            AdminConfig.create('Property', web, '[[validationExpression ""] [name "UseInsecure"] [description ""] [value "true"] [required "false"]]')
-            print "adicionado ",prop
-            AdminConfig.save()
+    if property:
+        for prop in property:
+            if prop.find("UseInsecure") >= 0 :
+                AdminConfig.modify(prop, '[[validationExpression ""] [name "UseInsecure"] [description ""] [value "true"] [required "false"]]')
+                print "midificado ",prop
+                AdminConfig.save()
+            else:
+                AdminConfig.create('Property', web, '[[validationExpression ""] [name "UseInsecure"] [description ""] [value "true"] [required "false"]]')
+                print "adicionado ",AdminConfig.list('Property', web).split()
+                AdminConfig.save()
+    else:
+        AdminConfig.create('Property', web, '[[validationExpression ""] [name "UseInsecure"] [description ""] [value "true"] [required "false"]]')
+        print "adicionado ",AdminConfig.list('Property', web).split()
+        AdminConfig.save()
+
 
       
     #EndIf

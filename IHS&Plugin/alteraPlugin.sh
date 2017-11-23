@@ -4,7 +4,7 @@
 #
 #
 #encontra plugin file
-pluginFile=$(grep plugin-cfg.xml "/opt/IHSCONF/webserver/conf/httpd_include.conf" | grep -v \#| cut -d" " -f 2)
+pluginFile=$(grep plugin-cfg.xml "/opt/IHSCONF/$(hostname -s)/conf/httpd.conf" | grep -v \#| cut -d" " -f 2)
 
 ##########
 #Faz backup do arquivo.
@@ -35,14 +35,14 @@ lastElement=${arrayPlugin[lenghtArray-1]}
 param1='StrictSecurity="false"' 
 if [[ `echo ${arrayPlugin[@]}| grep "StrictSecurity"` ]]
 then
-echo "parametro existe. altere."
-echo ${arrayPlugin[@]/StrictSecurity*/$param1}
+  echo "parametro existe. altere."
+  echo ${arrayPlugin[@]/StrictSecurity*/$param1}
 else 
-echo "parametro não existe. inclua."
-#tira o ultimo parametro para não perder o ">"
-unset arrayPlugin[lenghtArray-1]
-#adiciona parametro e ultimo elemento.
-arrayPlugin=("${arrayPlugin[@]}" $param1 $lastElement)
+  echo "parametro não existe. inclua."
+  #tira o ultimo parametro para não perder o ">"
+  unset arrayPlugin[lenghtArray-1]
+  #adiciona parametro e ultimo elemento.
+  arrayPlugin=("${arrayPlugin[@]}" $param1 $lastElement)
 fi
 
 #########
@@ -58,14 +58,14 @@ lastElement=${arrayPlugin[lenghtArray-1]}
 param2='UseInsecure="true"'
 if [[ `echo ${arrayPlugin[@]}| grep "UseInsecure"` ]]
 then
-echo "parametro existe. altere."
-echo ${arrayPlugin[@]/UseInsecure*/$param2}
+  echo "parametro existe. altere."
+  echo ${arrayPlugin[@]/UseInsecure*/$param2}
 else 
-echo "parametro não existe. inclua."
-#tira o ultimo parametro para não perder o ">"
-unset arrayPlugin[lenghtArray-1]
-#adiciona parametro e ultimo elemento.
-arrayPlugin=("${arrayPlugin[@]}" $param2 $lastElement)
+  echo "parametro não existe. inclua."
+  #tira o ultimo parametro para não perder o ">"
+  unset arrayPlugin[lenghtArray-1]
+  #adiciona parametro e ultimo elemento.
+  arrayPlugin=("${arrayPlugin[@]}" $param2 $lastElement)
 fi
 
 #transforma array em variavel, pq fica mais facil de colocar no sed.
@@ -73,6 +73,8 @@ novoValor=${arrayPlugin[@]}
 
 #altera plugin.
 sed -e "s|<Config.*|${novoValor}|g" -i $pluginFile
+sed -e "s|/WebSphere7/IHS/Plugins|/WebSphere8.5.5/Plugins|g" -i $pluginFile
+
 
 #Fim
 ###########

@@ -28,8 +28,9 @@ cd /opt/WebSphere8.5.5/InstallationManager/eclipse/tools
 mkdir -p /opt/WebSphere8.5.5/Plugins
 ./imcl install com.ibm.websphere.PLG.v85_8.5.5011.20161206_1434 -repositories http://22.160.198.100/software/websphere/com.ibm.websphere.PLG.v85 -installationDirectory /opt/WebSphere8.5.5/Plugins -acceptLicense -sP -sharedResourcesDirectory /opt/WebSphere8.5.5/InstallationManager/IMShared -preferences com.ibm.cic.common.core.preferences.keepFetchedFiles=false,com.ibm.cic.common.core.preferences.preserveDownloadedArtifacts=false -properties core.feature=true,com.ibm.jre.6_64bit=true
 
-#Como Root
-#rm -rf /opt/IHS &&
-#cd /opt/ &&
-#ln -s /opt/WebSphere8.5.5/IHS IHS
+#Executar como root.
+echo "Se instalação foi com sucesso, executar como root"
+echo "os comandos a seguir e prosseguir com os outros scripts."
+echo "rm -rf /opt/IHS &&"
+echo "ln -s /opt/WebSphere8.5.5/IHS /opt/IHS"
 ##
